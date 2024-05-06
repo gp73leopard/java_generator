@@ -25,7 +25,8 @@ public class FakeDataGenerator {
         fw.close();
     }
     public static String Name(){
-        String alph = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+//        String alph = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        String alph = "abcdefghijklmopqrstuvwxyz";
         String fio = "";
         Random r = new Random();
         for (int i=0;i<3;i++)
@@ -59,7 +60,7 @@ public class FakeDataGenerator {
                 email+=".com";
             }
         }
-        return email;
+        return email.replace("@", "");
     }
     public static String BDate(){
         Random r = new Random();
@@ -77,18 +78,18 @@ public class FakeDataGenerator {
         {
             birthday+="0";
         }
-        birthday += day+".";
+        birthday += day+"-";
         if(month<10)
         {
             birthday+="0";
         }
-        birthday+=month+"."+year;
+        birthday+=month+"-"+year;
         return birthday;
     }
     public static String Phone(){
         Random r = new Random();
         int count = r.nextInt(10000000);
-        String phone = "8999";
+        String phone = "8991";
         for (int i=String.valueOf(count).length();i<7;i++)
         {
             phone+='0';//добавление недостающих символов, если меньше 7 цифр
@@ -129,6 +130,7 @@ public class FakeDataGenerator {
         sb.insert(3,"-"); //форматирование снилса
         sb.insert(7,"-");
         sb.insert(11," ");
+        sb.deleteCharAt(sb.length()-1);
         return sb.toString();
     }
 }
