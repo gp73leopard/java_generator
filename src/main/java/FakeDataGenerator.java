@@ -38,7 +38,7 @@ public class FakeDataGenerator {
                 fio+=' '; //разделение ФИО через пробел
             }
         }
-        return fio;
+        return "test test test";
     }
     public static String Email(){
         String email ="";
@@ -59,7 +59,7 @@ public class FakeDataGenerator {
                 email+=".com";
             }
         }
-        return email;
+        return "abc@gmail.com";
     }
     public static String BDate(){
         Random r = new Random();
@@ -83,7 +83,7 @@ public class FakeDataGenerator {
             birthday+="0";
         }
         birthday+=month+"."+year;
-        return birthday;
+        return "01.01.2001";
     }
     public static String Phone(){
         Random r = new Random();
@@ -94,7 +94,7 @@ public class FakeDataGenerator {
             phone+='0';//добавление недостающих символов, если меньше 7 цифр
         }
         phone+=String.valueOf(count);
-        return phone;
+        return "89990000001";
     }
     public static String Snils(){
         Random r = new Random();
@@ -129,6 +129,7 @@ public class FakeDataGenerator {
         sb.insert(3,"-"); //форматирование снилса
         sb.insert(7,"-");
         sb.insert(11," ");
-        return sb.toString();
+//        return sb.toString();
+        return "628-178-397";
     }
 }
