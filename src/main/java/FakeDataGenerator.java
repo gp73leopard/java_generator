@@ -63,10 +63,12 @@ public class FakeDataGenerator {
     }
     public static String BDate(){
         Random r = new Random();
-        int a=18,b=99; //границы возраста
+        int a=100
+//                ,b=17
+                ; //границы возраста
         LocalDate currentDate = LocalDate.now();
         LocalDate date1 = currentDate.minus(Period.ofYears(a)); //граница даты когда человеку b-лет
-        LocalDate date2 = currentDate.minus(Period.ofYears(b)); //граница даты когда человеку a-лет
+        LocalDate date2 = currentDate.minus(Period.ofYears(a)); //граница даты когда человеку a-лет
         int days = (int)Math.abs(date2.toEpochDay()-date1.toEpochDay()); //расчет количества дней между датами
         LocalDate date3 = date2.plus(Period.ofDays(r.nextInt(days+1))); //генерация даты в периоде дат от a до b
         int day = date3.getDayOfMonth();
@@ -87,13 +89,14 @@ public class FakeDataGenerator {
     }
     public static String Phone(){
         Random r = new Random();
-        int count = r.nextInt(10000000);
+        int count = r.nextInt(1000000);
         String phone = "8999";
-        for (int i=String.valueOf(count).length();i<7;i++)
+        for (int i=String.valueOf(count).length();i<6;i++)
         {
             phone+='0';//добавление недостающих символов, если меньше 7 цифр
         }
         phone+=String.valueOf(count);
+        phone+="a";
         return phone;
     }
     public static String Snils(){
