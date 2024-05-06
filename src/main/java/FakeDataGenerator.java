@@ -11,11 +11,12 @@ public class FakeDataGenerator {
         ArrayList<String> data = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         FileWriter fw = new FileWriter("data.csv");
-        Faker faker = new Faker();
+        String bdate = BDate();
+        String Email = Email();
         System.out.println("Введите размер пула: ");
         int k = in.nextInt(); //ввод размера пула
         for (int i=0;i<k;i++){
-            data.add(Name(faker)+";"+BDate(faker)+";"+Phone()+";"+Email(faker)+";"+Snils()); //запись в список
+            data.add(Name()+";"+bdate+";"+Phone()+";"+Email+";"+Snils()); //запись в список
         }
         for (String str : data){
             fw.write(str+"\n"); //запись в файла из списка
@@ -23,48 +24,44 @@ public class FakeDataGenerator {
         }
         fw.close();
     }
-    public static String Name(Faker faker){
-        faker = new Faker(new Locale("ru"));
-        String fio = faker.name().fullName();
-//        String alph = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-//        String fio = "";
-//        Random r = new Random();
-//        for (int i=0;i<3;i++)
-//        {
-//            for (int j=0;j<10;j++)
-//            {
-//                fio+=alph.charAt(r.nextInt(alph.length())); //генерация ФИО из алфавита русских букв
-//            }
-//            if(i!=2){
-//                fio+=' '; //разделение ФИО через пробел
-//            }
-//        }
+    public static String Name(){
+        String alph = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        String fio = "";
+        Random r = new Random();
+        for (int i=0;i<3;i++)
+        {
+            for (int j=0;j<10;j++)
+            {
+                fio+=alph.charAt(r.nextInt(alph.length())); //генерация ФИО из алфавита русских букв
+            }
+            if(i!=2){
+                fio+=' '; //разделение ФИО через пробел
+            }
+        }
         return fio;
     }
-    public static String Email(Faker faker){
-        faker = new Faker(new Locale("en"));
-        String email = faker.name().name().replaceAll("\\W","")+"@yandex.ru";
-//        String email ="";
-//        Random r = new Random();
-//        String alph_en = "abcdefghijklmnopqrstuvwxyz";
-//        for (int i=0;i<2;i++)
-//        {
-//            for (int j=0;j<6;j++)
-//            {
-//                email+=alph_en.charAt(r.nextInt(alph_en.length())); //генерация почты из английского алфавита
-//            }
-//            if(i==0)
-//            {
-//                email+='@';
-//            }
-//            if(i==1)
-//            {
-//                email+=".com";
-//            }
-//        }
+    public static String Email(){
+        String email ="";
+        Random r = new Random();
+        String alph_en = "abcdefghijklmnopqrstuvwxyz";
+        for (int i=0;i<2;i++)
+        {
+            for (int j=0;j<6;j++)
+            {
+                email+=alph_en.charAt(r.nextInt(alph_en.length())); //генерация почты из английского алфавита
+            }
+            if(i==0)
+            {
+                email+='@';
+            }
+            if(i==1)
+            {
+                email+=".com";
+            }
+        }
         return email;
     }
-    public static String BDate(Faker faker){
+    public static String BDate(){
         Random r = new Random();
         int a=18,b=99; //границы возраста
         LocalDate currentDate = LocalDate.now();
