@@ -38,7 +38,7 @@ public class FakeDataGenerator {
                 fio+=' '; //разделение ФИО через пробел
             }
         }
-        return "test test test";
+        return "тест тест тест";
     }
     public static String Email(){
         String email ="";
